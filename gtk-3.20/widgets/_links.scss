@@ -22,7 +22,7 @@
     *:selected & { color: mix($selected_fg_color, $selected_bg_color, 80%); }
   }
 
-  &:backdrop { &:backdrop:hover, &:backdrop:hover:selected, & { color: $selected_bg_color; }}
+  &:backdrop { &:backdrop:hover, &:backdrop:hover:selected, & { color: transparentize($link_color, 0.5); }}
 
   @at-root %link_selected,
   &:selected,

@@ -5,6 +5,10 @@ node_modules/
 .sass-cache/
 *.css.map
 
+# Python helper scripts
+__pycache__/
+*.pyc
+
 _gnome-shell
 
 install.sh

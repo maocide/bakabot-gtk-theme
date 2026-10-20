@@ -1,0 +1,32 @@
+BakaBot GTK Theme
+=================
+
+This repository is a modified fork of Dracula GTK v4.0.0:
+
+  https://github.com/dracula/gtk/tree/v4.0.0
+
+Original work
+-------------
+
+  Dracula GTK
+  Copyright (C) Eliver Lara and contributors
+  Licensed under the GNU General Public License v3.0
+
+Modifications
+-------------
+
+  BakaBot GTK Theme
+  Copyright (C) 2026 Mario Negri (maocide)
+  https://github.com/maocide/bakabot-gtk-theme
+
+Changes include rebranding as BakaBot, replacing the accent palette with a
+pink/cyan palette, recoloring image assets, adding classic monochrome window
+buttons, and repairing several broken asset/style references.
+
+License
+-------
+
+This modified work is distributed under the GNU General Public License v3.0.
+See LICENSE for the full text.
+
+BakaBot is not affiliated with or endorsed by the Dracula theme project.

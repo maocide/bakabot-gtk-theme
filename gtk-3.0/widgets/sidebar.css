@@ -74,7 +74,6 @@ NEW ON GTK 3.18
 ---------------*/
 GtkSidebarRow.list-row {
   padding: 0px;
-  text-align: center;
 }
 GtkSidebarRow .sidebar-revealer {
   padding: 5px 14px 1px 12px; }

@@ -191,7 +191,7 @@ GtkProgressBar.trough.osd {
 .scale.slider:backdrop,
 .scale.scale-has-marks-above.scale-has-marks-below.slider:backdrop,
 .scale.vertical.scale-has-marks-above.scale-has-marks-below.slider:backdrop {
-    background-color: $red;
+    background-color: @red;
     background-position: center;
     background-repeat: no-repeat;
 

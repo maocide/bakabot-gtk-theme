@@ -1,11 +1,11 @@
 [Desktop Entry]
 Type=X-GNOME-Metatheme
-Name=Dracula
-Comment=A flat and light theme with a modern look
+Name=BakaBot
+Comment=Dark theme for GTK with BakaBot pink and cyan accents
 Encoding=UTF-8
 
 [X-GNOME-Metatheme]
-GtkTheme=Dracula
-MetacityTheme=Dracula
+GtkTheme=BakaBot
+MetacityTheme=BakaBot
 IconTheme=Mint-Y
 ButtonLayout=menu:minimize,maximize,close

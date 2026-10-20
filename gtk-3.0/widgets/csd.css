@@ -24,7 +24,7 @@
     background-color: transparent;
     border-color: transparent;
     color: @header_fg_color;
-    font: bold;
+    font-weight: bold;
 }
 
 .titlebar .button:hover,
@@ -57,12 +57,13 @@
 }
 
 .titlebar .title {
-    font: Bold 10;
+    font-weight: bold;
+    font-size: 10pt;
     color: @header_fg_color;
 }
 
 .titlebar .subtitle {
-    font: 9;
+    font-size: 9pt;
     color: @header_fg_color;
 }
 

@@ -12,7 +12,7 @@
     background-color: @base_color;
     background-image: none;
     color: @text_color;
-    font: bold;
+    font-weight: bold;
 
     -GtkWidget-focus-padding: 1;
     -GtkWidget-focus-line-width: 0;
@@ -59,7 +59,7 @@
     background-color: transparent;
     background-image: none;
     color: @fg_color;
-    font: bold;
+    font-weight: bold;
 }
 
 .button.flat:hover,
@@ -264,35 +264,35 @@
     border-color: transparent;
     border-top-color: alpha(white,0.2);
     border-bottom-color: alpha(black,0.2);
-    background-color: @cyan;
-    color: @selected_fg_color;
+    background-color: @accent;
+    color: @bg_color;
 
 }
 
 .suggested-action.button:hover,
 .list .suggested-action.button:hover,
 .titlebar .suggested-action.button:hover{
-    background-color: @cyan;
-    color: @selected_fg_color;
+    background-color: @accent;
+    color: @bg_color;
 }
 
 .suggested-action.button:active,
 .list .suggested-action.button:active,
 .titlebar .suggested-action.button:active {
-    background-color: shade(@cyan,0.9);
-    color: @selected_fg_color;
+    background-color: shade(@accent,0.9);
+    color: @bg_color;
 }
 
 .suggested-action.button:hover:active,
 .list .suggested-action.button:hover:active,
 .titlebar .suggested-action.button:hover:active {
-    background-color: shade(@cyan,0.9);
-    color: @selected_fg_color;
+    background-color: shade(@accent,0.9);
+    color: @bg_color;
 }
 
 .suggested-action.button:insensitive,
 .titlebar .suggested-action.button:insensitive {
-    background-color: mix(@bg_color,@cyan,0.6);
+    background-color: mix(@bg_color,@accent,0.6);
 }
 
 /********************

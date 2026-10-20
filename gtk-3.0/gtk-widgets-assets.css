@@ -115,7 +115,7 @@
 .check:checked,
 .check row:selected:active,
 .check row:selected:focus:active {
-    -gtk-icon-source: -gtk-scaled(url("../assets/checkbox-checked.png"),url("../assets/checkbox-checked@2.svg"));
+    -gtk-icon-source: -gtk-scaled(url("../assets/checkbox-checked.png"),url("../assets/checkbox-checked@2.png"));
 }
 
 .check:active:insensitive,
@@ -230,7 +230,7 @@ GtkIconView.content-view.cell.check {
 }
 
 GtkIconView.content-view.cell.check:checked {
-    -gtk-icon-source: -gtk-scaled(url("../assets/grid-selection-checked.svg"),url("../assets/grid-selection-checked@2.svg"));
+    -gtk-icon-source: -gtk-scaled(url("../assets/grid-selection-checked.png"),url("../assets/grid-selection-checked@2.png"));
 }
 
 /******************

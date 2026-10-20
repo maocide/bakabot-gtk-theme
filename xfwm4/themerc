@@ -1,4 +1,4 @@
-#button_layout=O|HMC
+button_layout=|HMC
 button_offset=2
 button_spacing=2
 
@@ -22,3 +22,6 @@ shadow_delta_y=-4
 shadow_opacity=46
 
 show_popup_shadow=true
+
+border_width=3
+frame_border_width=3

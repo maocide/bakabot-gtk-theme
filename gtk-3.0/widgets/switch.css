@@ -5,7 +5,6 @@
 GtkSwitch {
     -GtkSwitch-slider-width: 30;
     border: none;
-    font: 1;
 }
 
 GtkSwitch.trough {

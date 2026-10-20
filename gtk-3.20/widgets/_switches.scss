@@ -67,7 +67,16 @@
     }
   }
 
-  &:checked slider { }
+  // BakaBot: cyan track, pink handle when on.
+  &:active slider,
+  &:checked slider {
+    background-color: $purple;
+  }
+
+  &:active:backdrop slider:backdrop,
+  &:checked:backdrop slider:backdrop {
+    background-color: transparentize($purple, 0.3);
+  }
 
   &:backdrop {
   }

@@ -2,7 +2,7 @@
  * assistant *
  *************/
 GtkAssistant .sidebar .highlight {
-    font: bold;
+    font-weight: bold;
 }
 
 GtkAssistant .sidebar {

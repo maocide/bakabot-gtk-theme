@@ -7,13 +7,15 @@ $dracula: $bg_color;
 $topbar_color: #f8f8f2;
 
 
+$pink: #ff85b3;
+$cyan: #00e0e0;
+
 $orange: #ffb86c;
 $yellow: #f1fa8c;
 $red: #ff5555;
-$purple: #bd93f9;
-$cyan: #72BFD0;
-$lime: #50fa7a;
-$teal: #bd93f9;
+$purple: $pink;
+$lime: $cyan;
+$teal: $cyan;
 
 $g1: transparentize($purple, 0.5);
 $g2: transparentize($purple, 0.5);
@@ -23,7 +25,7 @@ $selected_bg_color: transparentize($purple, 0.5);
 $selected_borders_color: darken($selected_bg_color, 10%);
 $borders_color: darken($bg_color, 6%);
 $borders_edge: transparentize(white, 0.9);
-$link_color: #A0C1B9;
+$link_color: $cyan;
 $link_visited_color: transparentize($link_color,0.5);
 $top_hilight: $borders_edge;
 $top_highlight: transparentize(white, 0.9);

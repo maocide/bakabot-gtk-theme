@@ -9,14 +9,16 @@ $fg_color: #f8f8f2;
 
 $main_dark_color: darken($bg_color, 5%);
 
-$lime: #50fa7a;
+$pink: #ff85b3;
+$cyan: #00e0e0;
+
+$lime: $cyan;
 $red: #ff5555;
 $orange: #ffb86c;
 $yellow: #f1fa8c;
-$purple: #bd93f9;
+$purple: $pink;
 $darkpurple: #44475a;
-$cyan: #72BFD0;
-$blue: #13b1d5;
+$blue: $cyan;
 
 $selected_fg_color: #f8f8f2;
 $selected_bg_color: transparentize($purple, 0.5);
@@ -32,13 +34,13 @@ $warning_color: #F27835;
 $error_color: #FC4138;
 $warning_fg_color: white;
 $error_fg_color: white;
-$success_color: #73d216;
+$success_color: $cyan;
 $destructive_color: #F04A50;
-$suggested_color: #4DADD4;
+$suggested_color: $pink;
 $destructive_fg_color: white;
 $suggested_fg_color: white;
 
-$drop_target_color: #F08437;
+$drop_target_color: $cyan;
 
 //insensitive state derived colors
 $insensitive_fg_color: if($variant == 'light', transparentize($fg_color, 0.45), transparentize($fg_color, 0.55));

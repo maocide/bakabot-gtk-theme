@@ -25,5 +25,5 @@ row:selected:focus {
     background-color:  shade(@selected_bg_color, 0.9);
     color: @selected_fg_color;
     background-image: none;
-    font: bold;
+    font-weight: bold;
 }
