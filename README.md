@@ -21,7 +21,7 @@ BakaBot’s original design language relies heavily on rounded, pill-like shapes
 
 I had to spend some years in the web dev trenches dealing with raw HTML, CSS, PHP, classic ASP, ASP.NET, Dojo, and jQuery before wanting out and going back to back ends. My tour of duty hunting down cascading inheritance bugs is done—please understand. 
 
-When tracking down hundreds of obscure GTK2/3/4 border-color hexes started causing physical headaches, I handed the grunt work to my local AI agent (**T-800**) to script and automate the palette replacement across the codebase. I call it using a power drill instead of getting an aneurysm.
+When tracking down hundreds of obscure GTK2/3/4 border-color hexes started causing physical headaches, I handed the grunt work to my local AI agent (**T-800**) to script and automate the palette replacement across the codebase. I call it using a power drill instead of getting an aneurysm. After cleaning and setting up the workflow, I will go on the changes myself.
 
 ---
 
@@ -66,7 +66,71 @@ xfconf-query -c xfwm4 -p /general/button_layout -s "|HMC"
 
 ## Tooling & Regeneration
 
-The upstream v4.0.0 Gulp/node-sass pipeline is obsolete on modern Linux distros, so the generated CSS in this repo is authoritative. You can regenerate the assets and window buttons anytime via Python:
+The upstream v4.0.0 Gulp/node-sass pipeline is obsolete on modern Linux distros, so the generated base CSS in this repo is kept as the runtime base. BakaBot-specific styling lives in a small SCSS override layer:
+
+```text
+gtk-3.20/bakabot.scss          → gtk-3.20/bakabot.css
+gtk-4.0/bakabot.scss           → gtk-4.0/bakabot.css
+gtk-3.20/_bakabot-shared.scss  shared rules, imported by both
+gtk-3.20/_bakabot-colors.scss  BakaBot color tokens
+```
+
+Edit the shared file (or the per-generation entry files), then build and install:
+
+```bash
+./tools/build.sh
+./tools/install.sh
+
+# Only needed after changing panel styles:
+xfce4-panel -r
+```
+
+`tools/install.sh` already runs `tools/build.sh` automatically. Set `SKIP_BUILD=1` to skip it.
+
+Dart Sass is required. Install it system-wide with your package manager, or place a local copy in `tools/.dart-sass/`. You can also point the build at a specific binary:
+
+```bash
+SASS=/path/to/sass ./tools/build.sh
+```
+
+### How the CSS loads
+
+GTK reads the generated base files, then applies the BakaBot layer:
+
+```text
+gtk-3.20/gtk.css       (or gtk-dark.css)
+gtk-4.0/gtk.css        (or gtk-dark.css)
+```
+
+Each base file ends with:
+
+```css
+/* BakaBot custom layer */
+@import url("bakabot.css");
+```
+
+The import is intentionally last. GTK allows `@import` after existing rules, so the custom layer wins by cascade order. Both normal and dark base files load it; GTK picks `gtk-dark.css` when `Gtk/ApplicationPreferDarkTheme` is enabled.
+
+`tools/build.sh` re-adds the import if an upstream update removes it.
+
+### What to edit
+
+| Change | File |
+| --- | --- |
+| Panel, switches, links, buttons | `gtk-3.20/_bakabot-shared.scss` |
+| Palette tokens for the custom layer | `gtk-3.20/_bakabot-colors.scss` |
+| GTK4-only rules | `gtk-4.0/bakabot.scss` |
+| Generated base CSS | `gtk-3.20/gtk*.css`, `gtk-4.0/gtk*.css` — treat as read-only |
+
+For BakaBot-specific tweaks, edit the override layer. The generated base CSS is treated as read-only and defines everything not overridden here.
+
+Commit the SCSS change and the regenerated `bakabot.css` together. Do not edit `bakabot.css` by hand; it is generated.
+
+`gtk-3.0` and `gtk-2.0` are legacy hand-written themes and are not part of this SCSS workflow.
+
+### Base palette and assets
+
+The base palette pass and generated window buttons are still reproducible with Python:
 
 ```bash
 python3 tools/apply_palette.py

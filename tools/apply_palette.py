@@ -57,62 +57,6 @@ RGBA_MAP = {
     (152, 208, 221): (102, 240, 240),
 }
 
-OVERRIDE_MARKER = "/* BakaBot overrides */"
-OVERRIDE_CSS = """/* BakaBot overrides */
-/* Pink primary buttons need dark text for readable contrast. */
-button.suggested-action,
-button.suggested-action:hover,
-button.suggested-action:active,
-button.suggested-action:checked,
-button.suggested-action:disabled,
-button.suggested-action:backdrop,
-button.suggested-action:backdrop:disabled,
-.titlebar button.suggested-action,
-headerbar button.suggested-action,
-.titlebar button.suggested-action:hover,
-headerbar button.suggested-action:hover,
-.titlebar button.suggested-action:active,
-headerbar button.suggested-action:active,
-.titlebar button.suggested-action:checked,
-headerbar button.suggested-action:checked,
-.titlebar button.suggested-action:disabled,
-headerbar button.suggested-action:disabled,
-.titlebar button.suggested-action:backdrop,
-headerbar button.suggested-action:backdrop,
-.selection-mode.titlebar button.suggested-action,
-headerbar.selection-mode button.suggested-action,
-.selection-mode.titlebar button.suggested-action:hover,
-headerbar.selection-mode button.suggested-action:hover,
-.selection-mode.titlebar button.suggested-action:active,
-headerbar.selection-mode button.suggested-action:active {
-  color: #1e1f29;
-}
-
-button.suggested-action label,
-button.suggested-action:disabled label,
-button.suggested-action:backdrop label,
-.titlebar button.suggested-action label,
-headerbar button.suggested-action label,
-.selection-mode.titlebar button.suggested-action label,
-headerbar.selection-mode button.suggested-action label {
-  color: #1e1f29;
-}
-"""
-
-SWITCH_MARKER = "/* BakaBot switch overrides */"
-SWITCH_CSS = """/* BakaBot switch overrides */
-/* Cyan track with a pink handle when the switch is on. */
-switch:active slider,
-switch:checked slider {
-  background-color: #ff85b3;
-}
-
-switch:active:backdrop slider:backdrop,
-switch:checked:backdrop slider:backdrop {
-  background-color: rgba(255, 133, 179, 0.7);
-}
-"""
-
 CSS_FILES = [
     "gtk-3.20/gtk.css",
     "gtk-3.20/gtk-dark.css",
@@ -236,27 +180,12 @@ def replace_rgba(text: str) -> str:
     return pattern.sub(repl, text)
 
 
-def append_overrides(text: str) -> str:
-    if OVERRIDE_MARKER in text:
-        return text
-    return text.rstrip() + "\n\n" + OVERRIDE_CSS
-
-
-def append_switch_overrides(text: str) -> str:
-    if SWITCH_MARKER in text:
-        return text
-    return text.rstrip() + "\n\n" + SWITCH_CSS
-
-
 def process_css(path: Path) -> bool:
     original = path.read_text()
     text = replace_in_suggested_blocks(original)
     text = replace_hex(text)
     text = replace_rgba(text)
     text = fix_link_backdrop(text)
-    if path.parent.name in ("gtk-3.20", "gtk-4.0"):
-        text = append_overrides(text)
-        text = append_switch_overrides(text)
     if text == original:
         return False
     path.write_text(text)

@@ -5890,7 +5890,7 @@ radiobutton.color-button:active > radio {
   color: rgba(255, 255, 255, 0.8);
   border-radius: 0;
   border: none;
-  background-color: #1e1f29; }
+  background-color: rgba(30, 31, 41, 0); }
   #tasklist-button:hover {
     color: white;
     background-color: rgba(0, 0, 0, 0.17); }
@@ -5903,7 +5903,7 @@ radiobutton.color-button:active > radio {
   color: white;
   border-radius: 0;
   border: none;
-  background-color: #1e1f29;
+  background-color: rgba(30, 31, 41, 0);
   font-weight: normal; }
   .xfce4-panel.background button.flat:hover {
     border: none;
@@ -6402,54 +6402,5 @@ window.thunar toolbar > toolitem > widget > widget.linked.path-bar > button.path
 
 /*# sourceMappingURL=gtk.css.map */
 
-/* BakaBot overrides */
-/* Pink primary buttons need dark text for readable contrast. */
-button.suggested-action,
-button.suggested-action:hover,
-button.suggested-action:active,
-button.suggested-action:checked,
-button.suggested-action:disabled,
-button.suggested-action:backdrop,
-button.suggested-action:backdrop:disabled,
-.titlebar button.suggested-action,
-headerbar button.suggested-action,
-.titlebar button.suggested-action:hover,
-headerbar button.suggested-action:hover,
-.titlebar button.suggested-action:active,
-headerbar button.suggested-action:active,
-.titlebar button.suggested-action:checked,
-headerbar button.suggested-action:checked,
-.titlebar button.suggested-action:disabled,
-headerbar button.suggested-action:disabled,
-.titlebar button.suggested-action:backdrop,
-headerbar button.suggested-action:backdrop,
-.selection-mode.titlebar button.suggested-action,
-headerbar.selection-mode button.suggested-action,
-.selection-mode.titlebar button.suggested-action:hover,
-headerbar.selection-mode button.suggested-action:hover,
-.selection-mode.titlebar button.suggested-action:active,
-headerbar.selection-mode button.suggested-action:active {
-  color: #1e1f29;
-}
-
-button.suggested-action label,
-button.suggested-action:disabled label,
-button.suggested-action:backdrop label,
-.titlebar button.suggested-action label,
-headerbar button.suggested-action label,
-.selection-mode.titlebar button.suggested-action label,
-headerbar.selection-mode button.suggested-action label {
-  color: #1e1f29;
-}
-
-/* BakaBot switch overrides */
-/* Cyan track with a pink handle when the switch is on. */
-switch:active slider,
-switch:checked slider {
-  background-color: #ff85b3;
-}
-
-switch:active:backdrop slider:backdrop,
-switch:checked:backdrop slider:backdrop {
-  background-color: rgba(255, 133, 179, 0.7);
-}
+/* BakaBot custom layer */
+@import url("bakabot.css");

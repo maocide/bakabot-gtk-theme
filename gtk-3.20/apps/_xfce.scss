@@ -15,7 +15,7 @@
     color: transparentize($panel_fg_color, 0.2);
     border-radius: 0;
     border: none;
-    background-color: $panel_bg_color;
+    background-color: transparentize($panel_bg_color, 1);
 
     &:hover {
       color: lighten($panel_fg_color, 10%);
@@ -33,7 +33,7 @@
     color: $panel_fg_color;
     border-radius: 0;
     border: none;
-    background-color: $panel_bg_color;
+    background-color: transparentize($panel_bg_color, 1);
     font-weight: normal;
 
     &:hover {

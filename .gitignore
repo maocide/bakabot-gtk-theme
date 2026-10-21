@@ -9,6 +9,9 @@ node_modules/
 __pycache__/
 *.pyc
 
+# Local Dart Sass toolchain (install system-wide or bootstrap locally)
+tools/.dart-sass/
+
 _gnome-shell
 
-install.sh
+/install.sh

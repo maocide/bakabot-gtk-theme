@@ -1,0 +1,105 @@
+/* BakaBot shared customization layer.
+ *
+ * This file is compiled into gtk-3.20/bakabot.css and gtk-4.0/bakabot.css.
+ * It is imported after the base Dracula CSS, so these rules win by order.
+ * Keep BakaBot-specific panel, switch, link, and button tweaks here.
+ */
+
+@use 'bakabot-colors' as *;
+
+/* XFCE panel --------------------------------------------------------- */
+
+.xfce4-panel.background {
+  button.flat {
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+
+    &:hover {
+      background-color: rgba($cyan, 0.32);
+    }
+
+    &:active,
+    &:checked {
+      background-color: rgba($cyan, 0.34);
+      border-bottom: 2px solid $cyan;
+    }
+  }
+}
+
+#tasklist-button {
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+
+  &:hover {
+    background-color: rgba($panel_fg_color, 0.08);
+  }
+
+  &:checked {
+    background-color: rgba($pink, 0.14);
+    box-shadow: inset 0 -2px $pink;
+  }
+}
+
+/* Switches ---------------------------------------------------------- */
+
+switch:active slider,
+switch:checked slider {
+  background-color: $pink;
+}
+
+switch:active:backdrop slider:backdrop,
+switch:checked:backdrop slider:backdrop {
+  background-color: rgba($pink, 0.7);
+}
+
+/* Readable text on solid pink primary buttons ----------------------- */
+
+button.suggested-action,
+button.suggested-action:hover,
+button.suggested-action:active,
+button.suggested-action:checked,
+button.suggested-action:disabled,
+button.suggested-action:backdrop,
+button.suggested-action:backdrop:disabled,
+.titlebar button.suggested-action,
+headerbar button.suggested-action,
+.titlebar button.suggested-action:hover,
+headerbar button.suggested-action:hover,
+.titlebar button.suggested-action:active,
+headerbar button.suggested-action:active,
+.titlebar button.suggested-action:checked,
+headerbar button.suggested-action:checked,
+.titlebar button.suggested-action:disabled,
+headerbar button.suggested-action:disabled,
+.titlebar button.suggested-action:backdrop,
+headerbar button.suggested-action:backdrop,
+.selection-mode.titlebar button.suggested-action,
+headerbar.selection-mode button.suggested-action,
+.selection-mode.titlebar button.suggested-action:hover,
+headerbar.selection-mode button.suggested-action:hover,
+.selection-mode.titlebar button.suggested-action:active,
+headerbar.selection-mode button.suggested-action:active {
+  color: $panel_bg_color;
+}
+
+button.suggested-action label,
+button.suggested-action:disabled label,
+button.suggested-action:backdrop label,
+.titlebar button.suggested-action label,
+headerbar button.suggested-action label,
+.selection-mode.titlebar button.suggested-action label,
+headerbar.selection-mode button.suggested-action label {
+  color: $panel_bg_color;
+}
+
+/* Backdrop links stay dim cyan -------------------------------------- */
+
+*:link:backdrop,
+*:link:backdrop:hover,
+*:link:backdrop:hover:selected,
+button:backdrop:link,
+button:backdrop:visited {
+  color: rgba($cyan, 0.5);
+}
