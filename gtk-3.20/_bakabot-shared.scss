@@ -16,13 +16,13 @@
     border: none;
 
     &:hover {
-      background-color: rgba($cyan, 0.32);
+      background-color: rgba($secondary, 0.32);
     }
 
     &:active,
     &:checked {
-      background-color: rgba($cyan, 0.34);
-      border-bottom: 2px solid $cyan;
+      background-color: rgba($secondary, 0.34);
+      border-bottom: 2px solid $secondary;
     }
   }
 }
@@ -37,8 +37,8 @@
   }
 
   &:checked {
-    background-color: rgba($pink, 0.14);
-    box-shadow: inset 0 -2px $pink;
+    background-color: rgba($primary, 0.14);
+    box-shadow: inset 0 -2px $primary;
   }
 }
 
@@ -46,12 +46,12 @@
 
 switch:active slider,
 switch:checked slider {
-  background-color: $pink;
+  background-color: $primary;
 }
 
 switch:active:backdrop slider:backdrop,
 switch:checked:backdrop slider:backdrop {
-  background-color: rgba($pink, 0.7);
+  background-color: rgba($primary, 0.7);
 }
 
 /* Readable text on solid pink primary buttons ----------------------- */
@@ -101,5 +101,5 @@ headerbar.selection-mode button.suggested-action label {
 *:link:backdrop:hover:selected,
 button:backdrop:link,
 button:backdrop:visited {
-  color: rgba($cyan, 0.5);
+  color: rgba($secondary, 0.5);
 }

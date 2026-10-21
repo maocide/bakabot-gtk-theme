@@ -27,19 +27,19 @@
   background-color: rgba(255, 255, 255, 0.08);
 }
 #tasklist-button:checked {
-  background-color: rgba(255, 133, 179, 0.14);
-  box-shadow: inset 0 -2px #ff85b3;
+  background-color: rgba(255, 105, 180, 0.14);
+  box-shadow: inset 0 -2px #ff69b4;
 }
 
 /* Switches ---------------------------------------------------------- */
 switch:active slider,
 switch:checked slider {
-  background-color: #ff85b3;
+  background-color: #ff69b4;
 }
 
 switch:active:backdrop slider:backdrop,
 switch:checked:backdrop slider:backdrop {
-  background-color: rgba(255, 133, 179, 0.7);
+  background-color: rgba(255, 105, 180, 0.7);
 }
 
 /* Readable text on solid pink primary buttons ----------------------- */
@@ -68,7 +68,7 @@ headerbar.selection-mode button.suggested-action,
 headerbar.selection-mode button.suggested-action:hover,
 .selection-mode.titlebar button.suggested-action:active,
 headerbar.selection-mode button.suggested-action:active {
-  color: rgb(30, 31, 41);
+  color: #1e1f29;
 }
 
 button.suggested-action label,
@@ -78,7 +78,7 @@ button.suggested-action:backdrop label,
 headerbar button.suggested-action label,
 .selection-mode.titlebar button.suggested-action label,
 headerbar.selection-mode button.suggested-action label {
-  color: rgb(30, 31, 41);
+  color: #1e1f29;
 }
 
 /* Backdrop links stay dim cyan -------------------------------------- */

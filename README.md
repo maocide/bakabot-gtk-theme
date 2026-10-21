@@ -13,7 +13,7 @@
 
 I built the **BakaBot** chat platform with its own distinct visual identity, and I **wanted** my desktop to look as stupid as that one... starting by turning xfce4 panels fully pink and using unicorn-themed notifications. I needed the BakaBot palette running everywhere on Linux from terminal to desktop, just like in my software.
 
-Dracula GTK is already one of the cleanest dark bases in the open-source world, but not all creatures of the night want to live in purple. So instead of reinventing the wheel from scratch, I forked it: kept Dracula's great neutral slate (`#1e1f29`, `#282a36`, `#f8f8f2`), changed the purple/green accents, and injected BakaBot's signature neon pink (`#ff85b3`) and electric cyan (`#00e0e0`). The window buttons also changed cause I was confusing colors.
+Dracula GTK is already one of the cleanest dark bases in the open-source world, but not all creatures of the night want to live in purple. So instead of reinventing the wheel from scratch, I forked it: kept Dracula's great neutral slate (`#1e1f29`, `#282a36`, `#f8f8f2`), changed the purple/green accents, and injected BakaBot's signature neon pink (`#ff69b4`) and electric cyan (`#00e0e0`). The window buttons also changed cause I was confusing colors.
 
 BakaBot’s original design language relies heavily on rounded, pill-like shapes. Porting those organic pill curves into XFCE / xfwm4 and legacy GTK window decorators without tearing or breaking window borders is a battle for another endless night. For now, the colors are home.
 
@@ -32,7 +32,7 @@ When tracking down hundreds of obscure GTK2/3/4 border-color hexes started causi
 | **Background** | Deep Charcoal | `#1e1f29` |
 | **Surface** | Dark Slate | `#282a36` |
 | **Foreground / Text** | Crisp Chalk | `#f8f8f2` |
-| **Primary Accent** | BakaBot Pink | `#ff85b3` |
+| **Primary Accent** | BakaBot Pink | `#ff69b4` |
 | **Secondary Accent** | BakaBot Cyan | `#00e0e0` |
 | **Destructive / Error** | Crimson Alert | `#ff5555` |
 | **Warning** | Warm Amber | `#ffb86c` |
@@ -66,16 +66,20 @@ xfconf-query -c xfwm4 -p /general/button_layout -s "|HMC"
 
 ## Tooling & Regeneration
 
-The upstream v4.0.0 Gulp/node-sass pipeline is obsolete on modern Linux distros, so the generated base CSS in this repo is kept as the runtime base. BakaBot-specific styling lives in a small SCSS override layer:
+The upstream v4.0.0 Gulp/node-sass pipeline is obsolete on modern Linux distros. BakaBot uses a vendored pristine base, a single palette source, and a small SCSS override layer:
 
 ```text
-gtk-3.20/bakabot.scss          → gtk-3.20/bakabot.css
-gtk-4.0/bakabot.scss           → gtk-4.0/bakabot.css
-gtk-3.20/_bakabot-shared.scss  shared rules, imported by both
-gtk-3.20/_bakabot-colors.scss  BakaBot color tokens
+tools/palette.json              single palette source
+tools/palette.py                derives tokens → _bakabot-colors.scss
+vendor/dracula-v4.0.0/          pristine upstream base CSS
+gtk-3.20/bakabot.scss           → gtk-3.20/bakabot.css
+gtk-4.0/bakabot.scss            → gtk-4.0/bakabot.css
+gtk-3.20/_bakabot-shared.scss   shared custom rules
 ```
 
-Edit the shared file (or the per-generation entry files), then build and install:
+The build runs the palette pass, copies the vendored base, applies structural fixes, compiles the custom layer, and generates the window buttons.
+
+Edit the palette or shared file, then build and install:
 
 ```bash
 ./tools/build.sh
@@ -117,25 +121,33 @@ The import is intentionally last. GTK allows `@import` after existing rules, so 
 
 | Change | File |
 | --- | --- |
+| Palette colors | `tools/palette.json` |
+| Derived palette tokens | `gtk-3.20/_bakabot-colors.scss` — generated, read-only |
 | Panel, switches, links, buttons | `gtk-3.20/_bakabot-shared.scss` |
-| Palette tokens for the custom layer | `gtk-3.20/_bakabot-colors.scss` |
-| GTK4-only rules | `gtk-4.0/bakabot.scss` |
-| Generated base CSS | `gtk-3.20/gtk*.css`, `gtk-4.0/gtk*.css` — treat as read-only |
+| Structural base fixes | `tools/apply_base_fixes.py` |
+| GTK4-only custom rules | `gtk-4.0/bakabot.scss` |
+| Vendored/generated base CSS | `vendor/dracula-v4.0.0/`, `gtk-3.20/gtk*.css`, `gtk-4.0/gtk*.css` — read-only |
 
 For BakaBot-specific tweaks, edit the override layer. The generated base CSS is treated as read-only and defines everything not overridden here.
 
-Commit the SCSS change and the regenerated `bakabot.css` together. Do not edit `bakabot.css` by hand; it is generated.
+`tools/palette.json` also has an optional `overrides` section for explicit semantic values. The current `secondary_hover` and `secondary_light` entries preserve the existing look; remove them if you want those shades derived from cyan.
 
-`gtk-3.0` and `gtk-2.0` are legacy hand-written themes and are not part of this SCSS workflow.
+Commit the palette/SCSS changes and the regenerated CSS together. Do not edit `_bakabot-colors.scss`, `bakabot.css`, or the generated base CSS by hand; they are generated.
+
+`gtk-3.0` and `gtk-2.0` are legacy hand-written themes. Their accent colors and assets are adjusted by the palette pass, but they are not fully generated from SCSS yet.
 
 ### Base palette and assets
 
-The base palette pass and generated window buttons are still reproducible with Python:
+The palette pass, base fixes, and window buttons are reproducible from the palette source:
 
 ```bash
+python3 tools/palette.py
+python3 tools/apply_base_fixes.py
 python3 tools/apply_palette.py
 python3 tools/generate_window_buttons.py
 ```
+
+`tools/build.sh` runs all of these in the correct order.
 
 ---
 

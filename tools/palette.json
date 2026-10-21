@@ -1,0 +1,41 @@
+{
+  "base": {
+    "pink": "#ff69b4",
+    "cyan": "#00e0e0",
+    "red": "#ff5555",
+    "orange": "#ffb86c",
+    "yellow": "#f1fa8c",
+    "bg": "#1e1f29",
+    "surface": "#282a36",
+    "fg": "#f8f8f2",
+    "white": "#ffffff"
+  },
+  "roles": {
+    "primary": "pink",
+    "secondary": "cyan",
+    "error": "red",
+    "warning": "orange",
+    "warning_alt": "yellow",
+    "success": "cyan",
+    "background": "bg",
+    "surface": "surface",
+    "text": "fg",
+    "on_primary": "bg",
+    "panel_bg": "bg",
+    "panel_fg": "white"
+  },
+  "derive": {
+    "primary_darken": 0.10,
+    "primary_lighten": 0.10,
+    "secondary_hover_lighten": 0.10,
+    "secondary_light_mix": 0.40,
+    "selection_alpha": 0.5,
+    "backdrop_selection_alpha": 0.4,
+    "primary_border_alpha": 0.5,
+    "link_visited_alpha": 0.5
+  },
+  "overrides": {
+    "secondary_hover": "#33f0f0",
+    "secondary_light": "#66f0f0"
+  }
+}

@@ -17,6 +17,7 @@ rsync -a --delete \
   --exclude 'node_modules/' \
   --exclude 'src/' \
   --exclude 'tools/' \
+  --exclude 'vendor/' \
   --exclude '*.scss' \
   --exclude '*.css.map' \
   --exclude 'Gulpfile.js' \
@@ -24,5 +25,8 @@ rsync -a --delete \
   --exclude 'package-lock.json' \
   --exclude 'screenshot.png' \
   "$ROOT"/ "$DEST"/
+
+# rsync --delete does not remove excluded paths; keep source-only material out.
+rm -rf "$DEST/vendor" "$DEST/tools" "$DEST/src"
 
 echo "Installed BakaBot GTK theme to: $DEST"
