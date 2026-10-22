@@ -295,7 +295,10 @@ def process_png(path: Path) -> bool:
     if image.mode not in ("RGBA", "RGB", "P"):
         return False
     rgba = image.convert("RGBA")
-    pixels = list(rgba.getdata())
+    if hasattr(rgba, "get_flattened_data"):
+        pixels = list(rgba.get_flattened_data())
+    else:
+        pixels = list(rgba.getdata())
     recolored = [recolor_rgba(px) for px in pixels]
     if recolored == pixels:
         return False

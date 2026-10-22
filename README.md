@@ -97,6 +97,14 @@ Dart Sass is required. Install it system-wide with your package manager, or plac
 SASS=/path/to/sass ./tools/build.sh
 ```
 
+### Verify the build
+
+```bash
+./tools/verify.sh
+```
+
+This builds twice, compares the generated files, checks whitespace, and parses the GTK3, GTK3 legacy, and GTK4 CSS.
+
 ### How the CSS loads
 
 GTK reads the generated base files, then applies the BakaBot layer:
